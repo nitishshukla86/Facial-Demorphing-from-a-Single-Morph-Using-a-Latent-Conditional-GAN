@@ -1,7 +1,7 @@
 # Facial Demorphing from a Single Morph Using a Latent Conditional GAN
 
 **Authors:** Nitish Shukla, Arun Ross  
-**Venue:** IEEE International Joint Conference on Biometrics (IJCB 2025) 
+**Venue:** IEEE International Joint Conference on Biometrics (IJCB 2025)  [Best Student Paper]
 
 
 ## Abstract
