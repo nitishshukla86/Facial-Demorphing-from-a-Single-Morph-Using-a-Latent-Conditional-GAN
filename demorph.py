@@ -44,15 +44,7 @@ from FM.adaface import get_adaface_embedding, get_adaface_model
 from tqdm.auto import tqdm
 import argparse
 
-class TrainingConfig:
-    def __init__(self):
-        self.img_height = 512  # size of image height
-        self.img_width = 512  # size of image width
-        self.channels = 3  # number of image channels
-        self.save_dir = './saved'
-opt = TrainingConfig()
 
-os.makedirs(opt.save_dir, exist_ok=True)
 
 
 model = "CompVis/stable-diffusion-v1-4"
@@ -62,7 +54,7 @@ autoencoder.requires_grad_(False);
 
 generator=UNet2DModel(in_channels=4,out_channels=8)
 generator=torch.nn.DataParallel(generator)
-generator.load_state_dict(torch.load('./pretrained/generator.pth'))
+generator.load_state_dict(torch.load('./pretrained/latent-conditional-gan.pth'))
 
 generator=generator.module.cuda()
 generator.eval();
@@ -82,7 +74,7 @@ with torch.no_grad():
 
 
 
-def process_single_morph(morph_path,  autoencoder, generator):
+def process_single_morph( autoencoder, generator,opt):
     
     transform = transforms.Compose([        
             transforms.ToTensor(),
@@ -97,11 +89,11 @@ def process_single_morph(morph_path,  autoencoder, generator):
                                     transforms.ToPILImage()
                                 ])
     # Derive img1 and img2 paths based on naming convention
-    filename = os.path.basename(morph_path)
+    filename = os.path.basename(opt.morph_path)
 
 
     # Load and transform
-    morph = transform(Image.open(morph_path).convert("RGB"))
+    morph = transform(Image.open(opt.morph_path).convert("RGB"))
 
 
     # Create batch
@@ -131,20 +123,30 @@ def process_single_morph(morph_path,  autoencoder, generator):
     plt.show()
 
     # Save reconstructions
-    recon1_img.save(os.path.join(opt.save_dir, filename.replace("morph", "recon1")))
-    recon2_img.save(os.path.join(opt.save_dir, filename.replace("morph", "recon2")))
-    print(f"Saved reconstructed images to {opt.save_dir}")
+    recon1_img.save(os.path.join(opt.save_path, filename.replace("morph", "recon1")))
+    recon2_img.save(os.path.join(opt.save_path, filename.replace("morph", "recon2")))
+    print(f"Saved reconstructed images to {opt.save_path}")
 
 # ----------------------------
 # Command-line interface
 # ----------------------------
 if __name__ == "__main__":
+
     parser = argparse.ArgumentParser(description="Process a single morph image")
     parser.add_argument(
-        "--morph-path", type=str, required=True,
+        "--morph_path", type=str, required=True,
         help="Path to the morph image"
     )
-    args = parser.parse_args()
+    parser.add_argument(
+        "--save_path", type=str, required=True,
+        help="Path to the save directory"
+    )
+    parser.add_argument("--img_height", type=int, default=512,
+                        help="Image height (default: 512)")
+
+    parser.add_argument("--img_width", type=int, default=512,
+                        help="Image width (default: 512)")
+    opt = parser.parse_args()
 
     # Example usage: you need to define your autoencoder and generator objects
-    process_single_morph(args.morph_path, autoencoder, generator)
+    process_single_morph(autoencoder, generator, opt)

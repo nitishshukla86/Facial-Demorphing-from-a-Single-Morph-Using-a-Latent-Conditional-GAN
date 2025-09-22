@@ -66,7 +66,7 @@ model_path = hf_hub_download(
 
 5. **Run the demorphing model**
 ```bash
-python demorph.py --morph_path ./assets/morph1.png --output_dir ./saved/
+python demorph.py --morph_path ./assets/morph1.png --save_path ./saved/
 ```
 - `--morph_path`: Path to the morph image.
 - `--output_dir`: Directory where demorphed images will be saved.
