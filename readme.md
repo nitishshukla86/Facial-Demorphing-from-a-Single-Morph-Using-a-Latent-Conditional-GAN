@@ -76,12 +76,13 @@ python demorph.py --morph_path ./assets/morph1.png --save_path ./saved/
 ## Citation
 
 ```
-@article{shukla2025facial,
-  title={Facial Demorphing from a Single Morph Using a Latent Conditional GAN},
-  author={Shukla, Nitish and Ross, Arun},
-  journal={Proceedings of IEEE International Joint Conference on Biometrics (IJCB 2025) },
-  year={2025}
+@inproceedings{shukla2025facial,
+  title     = {Facial Demorphing from a Single Morph Using a Latent Conditional GAN},
+  author    = {Shukla, Nitish and Ross, Arun},
+  booktitle = {Proceedings of the IEEE International Joint Conference on Biometrics (IJCB)},
+  year      = {2025}
 }
+
 ```
 
 ## License
