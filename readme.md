@@ -35,13 +35,50 @@ The proposed method was evaluated on several benchmark morph datasets, demonstra
 *Table 1: Comparison of our method with the existing state-of-the-art demorphing techniques under a unified protocol. Our method outperforms IPD, SDeMorph and Face Demorphing . We assess our method using established image decomposition IQA metrics (PSNR/SSIM), demorphing metrics (Restoration Accuracy), and biometrically-weighted IQA (BW).*
 ![results](assets/ijcb2025-res.PNG)
 
+
+
+## Usage
+
+To use the facial demorphing framework, follow these steps:
+
+1. **Clone the repository**
+```bash
+git clone https://github.com/nitishshukla86/Facial-Demorphing-from-a-Single-Morph-Using-a-Latent-Conditional-GAN.git
+cd Facial-Demorphing-from-a-Single-Morph-Using-a-Latent-Conditional-GAN
+```
+
+2. **Install dependencies**
+```bash
+pip install -r requirements.txt
+```
+3. **Download model weights**
+```bash
+from huggingface_hub import hf_hub_download
+model_path = hf_hub_download(
+    repo_id="nitishshukla/pretrained-weights",
+    filename="latent-conditional-gan.pth",
+    local_dir="./pretrained"
+)
+```
+4. **Prepare input images**
+- Place the morph images you want to demorph in the `assets/` folder.
+- Supported formats: `.jpg`, `.png`, `.jpeg`.
+
+5. **Run the demorphing model**
+```bash
+python demorph.py --morph_path ./assets/morph1.png --output_dir ./saved/
+```
+- `--morph_path`: Path to the morph image.
+- `--output_dir`: Directory where demorphed images will be saved.
+
+
 ## Citation
 
 ```
 @article{shukla2025facial,
   title={Facial Demorphing from a Single Morph Using a Latent Conditional GAN},
   author={Shukla, Nitish and Ross, Arun},
-  journal={arXiv preprint arXiv:2507.18566},
+  journal={Proceedings of IEEE International Joint Conference on Biometrics (IJCB 2025) },
   year={2025}
 }
 ```
