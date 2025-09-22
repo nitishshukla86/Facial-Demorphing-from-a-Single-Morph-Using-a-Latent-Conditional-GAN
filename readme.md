@@ -1,5 +1,7 @@
-# Facial Demorphing from a Single Morph Using a Latent Conditional GAN [Best Student Paper]
-##  IEEE International Joint Conference on Biometrics (IJCB 2025)
+# Facial Demorphing from a Single Morph Using a Latent Conditional GAN
+
+**Authors:** Nitish Shukla, Arun Ross  
+**Venue:** IEEE International Joint Conference on Biometrics (IJCB 2025) 
 
 
 ## Abstract
@@ -8,6 +10,7 @@ A morph is created by combining two (or more) face images from two (or more) ide
 
 ## Methodology
 ![Methodology](assets/ijcb2025.PNG)
+
 *Figure 1: Proposed Demorphing Architecture: An encoder, compresses the morph along with the constituent face images during training. The generator, G, reconstructs two face images conditioned on the morph in the encoder's latent domain. The discriminator distinguishes between real and synthesized face feature triplets. During inference, a decompressor, recovers the constituent images. Note that the decoder, is used only during inference to decompress the demorphed outputs.*
 
 ### Contribution
@@ -19,8 +22,9 @@ A morph is created by combining two (or more) face images from two (or more) ide
 ## Results
 
 The proposed method was evaluated on several benchmark morph datasets, demonstrating superior performance in demorphing accuracy compared to existing techniques. Quantitative results show significant improvements in terms of both visual fidelity and identity preservation.
-![Methodology](assets/ijcb2025-r1.PNG)
-*Figure 1: Proposed Demorphing Architecture: An encoder, compresses the morph along with the constituent face images during training. The generator, G, reconstructs two face images conditioned on the morph in the encoder's latent domain. The discriminator distinguishes between real and synthesized face feature triplets. During inference, a decompressor, recovers the constituent images. Note that the decoder, is used only during inference to decompress the demorphed outputs.*
+[results](assets/ijcb2025-r1.PNG)
+*Figure 2: Demorphing outcomes across six different morphing techniques.*
+
 
 
 ## Citation
