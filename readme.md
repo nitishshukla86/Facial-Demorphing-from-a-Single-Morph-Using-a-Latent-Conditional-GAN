@@ -28,6 +28,13 @@ The proposed method was evaluated on several benchmark morph datasets, demonstra
 
 
 
+![results](assets/ijcb2025-r2.PNG)
+
+*Figure 3: Comparing reconstructions from our demorphing method to previous methods.*
+
+*Table 1: Comparison of our method with the existing state-of-the-art demorphing techniques under a unified protocol. Our method outperforms IPD, SDeMorph and Face Demorphing . We assess our method using established image decomposition IQA metrics (PSNR/SSIM), demorphing metrics (Restoration Accuracy), and biometrically-weighted IQA (BW).*
+![results](assets/ijcb2025-res.PNG)
+
 ## Citation
 
 ```
