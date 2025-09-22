@@ -22,7 +22,8 @@ A morph is created by combining two (or more) face images from two (or more) ide
 ## Results
 
 The proposed method was evaluated on several benchmark morph datasets, demonstrating superior performance in demorphing accuracy compared to existing techniques. Quantitative results show significant improvements in terms of both visual fidelity and identity preservation.
-[results](assets/ijcb2025-r1.PNG)
+![results](assets/ijcb2025-r1.PNG)
+
 *Figure 2: Demorphing outcomes across six different morphing techniques.*
 
 
